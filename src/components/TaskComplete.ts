@@ -1,6 +1,6 @@
 import data from '../data';
 
-function TaskComplete( ) {
+function TaskComplete( ):string {
     return (`${ data.tasksComplete() }`)
 }
 

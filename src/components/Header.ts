@@ -4,14 +4,13 @@ import Render from '../Render';
 import TaskComplete from './TaskComplete';
 import TaskList from './TaskList';
 
-function Header( ) {
+function Header( ): string {
 
-    function initialize( ) 
-    {
+    function initialize( ): void  {
         const taskForm = document.querySelector<HTMLFormElement>('form')
         taskForm?.addEventListener('submit', formSubmit)
 
-        function formSubmit( e:SubmitEvent ) {
+        function formSubmit( e:SubmitEvent ): void {
             e.preventDefault()
 
             let value = document.querySelector<HTMLInputElement>('input[name="taskAdd"')?.value
@@ -20,7 +19,7 @@ function Header( ) {
             if( value === undefined || value === '' || value.length < 3 ) 
                 return;
     
-            data.newTask( { title: value, time: Date.now(), complete: false } )
+            data.newTask( { title: value, time: Date.now(), complete: false} )
 
             taskForm?.reset()
 
@@ -28,21 +27,21 @@ function Header( ) {
         }
 
         const btnComplete = document.querySelector<HTMLButtonElement>('#clearComplete')
-        btnComplete?.addEventListener('click', () => {
+        btnComplete?.addEventListener('click', ():void => {
             data.clearCompleteTasks()
 
             renderComponents()
         })
 
         const btnClear = document.querySelector<HTMLButtonElement>('#clearAll')
-        btnClear?.addEventListener('click', () => {
+        btnClear?.addEventListener('click', ():void => {
             data.clearAllTasks()
 
             renderComponents()
         })
 
-        function renderComponents( ) {
-            // Render
+        function renderComponents( ):void {
+            // Render TaskList
             Render( '.task-list', TaskList() )
 
             // Render TaskComplete

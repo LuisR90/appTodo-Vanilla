@@ -3,7 +3,7 @@ import data from '../data';
 import Task from '../components/Task';
 import TaskButtons from '../components/TaskButtons';
 
-function TaskList( ) {
+function TaskList( ): string {
 
     const dataTasks = data.getTasks()
 

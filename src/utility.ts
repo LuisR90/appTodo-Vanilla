@@ -1,4 +1,4 @@
-function timeConverter(UNIX_timestamp: number){
+function timeConverter(UNIX_timestamp: number):string {
     let a = new Date(UNIX_timestamp);
     let months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
     let year = a.getFullYear();

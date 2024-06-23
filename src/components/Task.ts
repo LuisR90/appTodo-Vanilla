@@ -7,7 +7,7 @@ interface TaskObject {
 
 import Utility from '../utility';
 
-function Task( data:TaskObject ) {
+function Task( data:TaskObject ): string {
 
     const { id, title, time, complete } = data
     const styleComplete = complete ? 'task-complete' : ''

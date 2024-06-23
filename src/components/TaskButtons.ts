@@ -16,7 +16,7 @@ function TaskButtons( ):void {
         hookButtonsEvents()
     }, 100)
 
-    function removeButtonsEvents() {
+    function removeButtonsEvents():void {
         if(btnRemove === undefined && btnComplete === undefined)
             return
 
@@ -24,7 +24,7 @@ function TaskButtons( ):void {
         btnRemove.forEach( btn => btn.removeEventListener('click', event => removeTask(event, btn)) )
     }
 
-    function hookButtonsEvents( ) {
+    function hookButtonsEvents( ):void {
         if(btnRemove.length === 0 && btnComplete.length === 0)
             return
 
@@ -38,15 +38,12 @@ function TaskButtons( ):void {
         const idTask = Number( btn.getAttribute('data-id') )
         const idElement = document.querySelector<HTMLElement>(`#task-${idTask}`)
 
-        if(!idElement)
-            return
-
         const isComplete = data.isTaskComplete(idTask)
         data.setTaskComplete(idTask, !isComplete)
         data.setLocalData()
 
         const setStyle = !isComplete ? 'task-complete' : ''
-        idElement.setAttribute('class', setStyle)
+        idElement?.setAttribute('class', setStyle)
         
         // Render TaskList
         Render( '.task-list', TaskList() )
