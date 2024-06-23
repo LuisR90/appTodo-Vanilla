@@ -2,6 +2,7 @@ import data from '../data';
 
 import Task from '../components/Task';
 import TaskButtons from '../components/TaskButtons';
+import TaskEdit from './TaskEdit';
 
 function TaskList( ): string {
 
@@ -14,6 +15,7 @@ function TaskList( ): string {
     }
     
     TaskButtons()
+    TaskEdit()
 
     const noTasks = `
         <div class="dontTasks">There are no tasks</div>

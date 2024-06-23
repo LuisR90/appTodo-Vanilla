@@ -6,6 +6,7 @@ interface TaskObject {
 }
 
 import Utility from '../utility';
+import '../style-input.css';
 
 function Task( data:TaskObject ): string {
 
@@ -18,7 +19,14 @@ function Task( data:TaskObject ): string {
                 <a href="#" id="btnComplete" data-id="${ id }">✔</a>
                 <a href="#" id="btnRemove" data-id="${ id }">✗</a>
             </div>
-            <h5>${ title }</h5>
+
+            <input 
+                type="text" 
+                class="inpTask"
+                data-id="${ id }"
+                value="${ title }" 
+                readonly
+            />
             <p>${ Utility.timeConverter( time ) }</p>
         </article>
     `)

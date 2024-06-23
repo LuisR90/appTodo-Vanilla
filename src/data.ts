@@ -43,6 +43,11 @@ function removeTask( idTask:number ):void {
     setLocalData()
 }
 
+function setTitleTask( idTask: number, value: string ):void {
+    DATA_TASK[idTask].title = value
+    setLocalData()
+}
+
 function isTaskComplete( idTask:number ): boolean {
     return DATA_TASK[idTask].complete
 }
@@ -70,4 +75,4 @@ function clearCompleteTasks( ):void {
     localStorage.setItem( LOCAL_TASK, data )
 }
 
-export default { getLocalData, setLocalData, getTasks, tasksComplete, newTask, removeTask, isTaskComplete, setTaskComplete, clearAllTasks, clearCompleteTasks }
+export default { getLocalData, setLocalData, getTasks, tasksComplete, newTask, removeTask, setTitleTask, isTaskComplete, setTaskComplete, clearAllTasks, clearCompleteTasks }
