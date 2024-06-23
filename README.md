@@ -1,10 +1,10 @@
-# AppTodo Vanilla Javascript
+# AppTodo Vanilla TypeScript
 
 ![Image description](/preview.png)
 
 ### Que es appTodo?
-Es un proyecto pequeño para un principiante en Javascript
-esta hecho en vite y se uso solo HTML, CSS, JAVASCRIPT
+Es un proyecto pequeño para un principiante en TypeScript
+esta hecho en vite y se uso solo HTML, CSS, TypeScript
 
 ### Que Falta?
 
