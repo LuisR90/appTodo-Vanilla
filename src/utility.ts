@@ -1,13 +1,23 @@
-function timeConverter(UNIX_timestamp: number):string {
-    let a = new Date(UNIX_timestamp);
-    let months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-    let year = a.getFullYear();
-    let month = months[a.getMonth()];
-    let date = a.getDate();
-    let hour = a.getHours();
-    let min = a.getMinutes();
-    let time = date + ' ' + month + ' ' + year + ' | ' + hour + ':' + min ;
-    return time;
+function getTime(unixTimestamp:number) {
+    const now = Date.now() - unixTimestamp
+    const difference: number = now / 1000
+
+    const intervals: [string, number][] = [
+        ['yr', 31536000],
+        ['mth', 2592000],
+        ['day', 86400],
+        ['hrs', 3600],
+        ['min', 60]
+    ]
+
+    for (const [intervalo, segundos] of intervals) {
+        const cantidad: number = Math.floor(difference / segundos)
+        if (cantidad >= 1) {
+            return `${cantidad} ${intervalo}${cantidad !== 1 ? 's' : ''} ago`
+        }
+    }
+
+    return 'just now';
 }
 
-export default { timeConverter }
+export default { getTime }

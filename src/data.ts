@@ -1,7 +1,9 @@
 interface TaskObject {
     title: string,
     time: number,
-    complete: boolean
+    complete: boolean,
+    edit: boolean
+    editTime: number
 }
 
 interface TaskArray extends Array<TaskObject>{}
@@ -45,6 +47,8 @@ function removeTask( idTask:number ):void {
 
 function setTitleTask( idTask: number, value: string ):void {
     DATA_TASK[idTask].title = value
+    DATA_TASK[idTask].edit = true
+    DATA_TASK[idTask].editTime = Date.now()
     setLocalData()
 }
 

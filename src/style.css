@@ -76,6 +76,8 @@ header > form > input:focus {
   display: flex;
   flex-direction: column;
   gap: 10px;
+
+  margin-bottom: 20px;
 }
 
 .task-list article {
@@ -92,12 +94,6 @@ header > form > input:focus {
   background-color: #141414;
 }
 
-.task-list p {
-  margin-block-start: 0px;
-  margin-block-end: 0px;
-  font-size: 13px;
-}
-
 .task-complete { 
   background-color: rgba(255, 255, 255, 0.04) !important;
 }
@@ -107,8 +103,15 @@ header > form > input:focus {
   text-decoration: line-through;
 }
 
-.task-complete p {
+.task-complete ul {
   color: rgba(255, 255, 255, 0.1);
+  text-decoration: line-through;
+}
+
+.task-complete svg {
+  color: rgba(255, 255, 255, 0.1);
+  stroke: rgba(255, 255, 255, 0.1);
+  fill: rgba(255, 255, 255, 0.1);
   text-decoration: line-through;
 }
 
@@ -151,4 +154,31 @@ header > form > input:focus {
 
 .task-buttons > button:active {
   background-color: rgb(156, 13, 13);
+}
+
+.task-info {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  font-size: 13px;
+  list-style: none;
+  margin-block-start: 0px;
+  margin-block-end: 0px;
+  padding-inline-start: 0px;
+}
+
+.task-info li{
+  display: flex;
+  flex-direction: row;
+  gap: 2px;
+}
+
+.task-info svg {
+  align-self: center;
+  padding-right: 2px;
+}
+
+.task-info p {
+  margin-block-start: 0px;
+  margin-block-end: 0px;
 }

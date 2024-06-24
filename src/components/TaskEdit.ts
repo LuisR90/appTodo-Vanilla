@@ -1,4 +1,6 @@
 import data from '../data';
+import Render from '../Render';
+import TaskList from './TaskList';
 
 let inpTasks:NodeListOf<HTMLInputElement>
 let isEdit = false
@@ -44,6 +46,9 @@ function TaskEdit( ):void {
             data.setTitleTask(idTask, value)
             input.value = value
         }
+        
+        // Render TaskList
+        Render( '.task-list', TaskList() )
     }
 
     function setStyleEditOn( input:HTMLInputElement ):void {

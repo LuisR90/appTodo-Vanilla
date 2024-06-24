@@ -1,17 +1,27 @@
 interface TaskObject {
-    id: number,
+    id: number
     title: string,
     time: number,
-    complete: boolean
+    complete: boolean,
+    edit: boolean
+    editTime: number
 }
 
 import Utility from '../utility';
 import '../style-input.css';
 
+import EditTaskSvg from '../svgs/EditTask';
+import TimeStartSvg from '../svgs/TimeStart';
+
 function Task( data:TaskObject ): string {
 
-    const { id, title, time, complete } = data
+    const { id, title, time, complete, edit, editTime } = data
     const styleComplete = complete ? 'task-complete' : ''
+
+    const infoTime = `Created ${ Utility.getTime( time ) }`
+
+    const isEdit = edit 
+    const infoEdit = `Edited ${ Utility.getTime(editTime) }`
 
     return(`
         <article class="${ styleComplete }" id="task-${ id }" >
@@ -27,7 +37,12 @@ function Task( data:TaskObject ): string {
                 value="${ title }" 
                 readonly
             />
-            <p>${ Utility.timeConverter( time ) }</p>
+            <ul class="task-info">
+                <li> ${ TimeStartSvg(12)} ${ infoTime }</li>
+                ${ isEdit ? `<li>${ EditTaskSvg(12) } ${ infoEdit } </li>` : ''  }
+            </ul>
+
+  
         </article>
     `)
 }

@@ -19,7 +19,15 @@ function TaskForm( ): string {
             if( value === undefined || value === '' || value.length < 3 ) 
                 return;
     
-            data.newTask( { title: value, time: Date.now(), complete: false} )
+            data.newTask( { 
+                title: value, 
+                time: Date.now(), 
+                exp: false, 
+                expTime:0, 
+                complete: false, 
+                edit: false, 
+                editTime: 0
+            } )
 
             taskForm?.reset()
 

@@ -6,6 +6,12 @@ import TaskForm from './components/TaskForm';
 
 import Render from './Render';
 
+const MINUTE = 60000
+
+setInterval( () => {
+    Render( '.task-list', TaskList() )
+}, MINUTE * 1)
+
 const renderData = `
     ${ Header() }
 
