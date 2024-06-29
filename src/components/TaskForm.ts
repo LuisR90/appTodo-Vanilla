@@ -20,10 +20,9 @@ function TaskForm( ): string {
                 return;
     
             data.newTask( { 
+                id: Number(data.getTasks().length)+1,
                 title: value, 
                 time: Date.now(), 
-                exp: false, 
-                expTime:0, 
                 complete: false, 
                 edit: false, 
                 editTime: 0

@@ -38,7 +38,8 @@ function TaskEdit( ):void {
     function changeTaskTitle( input:HTMLInputElement ):void {
         const idTask = Number(input.getAttribute('data-id'))
         const value = input.value.trim()
-        const oldValue = data.getTasks()[idTask].title
+        const id = data.getTasks().findIndex( task => task.id === idTask )
+        const oldValue = data.getTasks()[id].title
 
         if( value === undefined || value === '' || value.length < 3 || oldValue === value ) 
             input.value = oldValue

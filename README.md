@@ -8,10 +8,9 @@ esta hecho en vite y se uso solo HTML, CSS, TypeScript
 
 ### Que Falta?
 
-- Editar Nombre del Task
-- Tareas completas al final de la lista
-- Agregar Limites de Tiempo
-- Animaciones
+✅ Editar Nombre del Task
+✅ Tareas completas al final de la lista
+❌ Animaciones
 
 #### Puedes dejar tus Criticas constructivas para mejorar en esto
 #### Gracias!

@@ -1,4 +1,5 @@
 interface TaskObject {
+    id: number,
     title: string,
     time: number,
     complete: boolean,
@@ -41,23 +42,27 @@ function newTask( save :TaskObject ):void {
 }
 
 function removeTask( idTask:number ):void {
-    DATA_TASK.splice( idTask, 1)
+    const id = DATA_TASK.findIndex( task => task.id === idTask )
+    DATA_TASK.splice( id, 1)
     setLocalData()
 }
 
 function setTitleTask( idTask: number, value: string ):void {
-    DATA_TASK[idTask].title = value
-    DATA_TASK[idTask].edit = true
-    DATA_TASK[idTask].editTime = Date.now()
+    const id = DATA_TASK.findIndex( task => task.id === idTask )
+    DATA_TASK[id].title = value
+    DATA_TASK[id].edit = true
+    DATA_TASK[id].editTime = Date.now()
     setLocalData()
 }
 
 function isTaskComplete( idTask:number ): boolean {
-    return DATA_TASK[idTask].complete
+    const id = DATA_TASK.findIndex( task => task.id === idTask )
+    return DATA_TASK[id].complete
 }
 
 function setTaskComplete( idTask:number, value:boolean ): void {
-    DATA_TASK[idTask].complete = value
+    const id = DATA_TASK.findIndex( task => task.id === idTask )
+    DATA_TASK[id].complete = value
     setLocalData()
 }
 
