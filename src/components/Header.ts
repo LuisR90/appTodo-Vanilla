@@ -3,7 +3,7 @@ import TaskComplete from './TaskComplete';
 function Header( ): string {
 
     return (`
-        <h1>AppTodo <span id="CompleteTask">${ TaskComplete() }</span></h1>
+        <h1>App To-Do <span id="CompleteTask">${ TaskComplete() }</span></h1>
     `)
 }
 

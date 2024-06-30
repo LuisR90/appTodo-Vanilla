@@ -1,4 +1,4 @@
-# AppTodo Vanilla TypeScript
+# App To-Do Vanilla TypeScript
 
 ![Image description](/preview.png)
 
