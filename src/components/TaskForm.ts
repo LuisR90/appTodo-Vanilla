@@ -13,11 +13,17 @@ function TaskForm( ): string {
         function formSubmit( e:SubmitEvent ): void {
             e.preventDefault()
 
-            let value = document.querySelector<HTMLInputElement>('input[name="taskAdd"')?.value
-            value = value?.trim();
+            const inputElement = document.querySelector<HTMLInputElement>('input[name="taskAdd"')
+            const value = inputElement?.value.trim();
     
-            if( value === undefined || value === '' || value.length < 3 ) 
+            if( value === undefined || value === '' || value.length < 3 ) {
+                inputElement?.classList.add('task-edit-error')
+                setTimeout( () => {
+                    inputElement?.classList.remove('task-edit-error')    
+                }, 400)
+                
                 return;
+            }
     
             data.newTask( { 
                 id: Number(data.getTasks().length)+1,

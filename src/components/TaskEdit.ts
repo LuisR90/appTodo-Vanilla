@@ -8,64 +8,32 @@ let isEdit = false
 function TaskEdit( ):void {
 
     setTimeout( () => {
+        if( inpTasks !== undefined ) {
+            inpTasks.forEach( inp => inp.removeEventListener('dblclick', inputdbClick) )
+        }
+
         inpTasks = document.querySelectorAll<HTMLInputElement>('.inpTask')
-        hookInputsEvent()
-    }, 100)
-
-    function hookInputsEvent( ):void {
-        if( inpTasks === undefined )
-            return;
-
-        inpTasks.forEach( inp => inp.removeEventListener('dblclick', inputdbClick) )
         inpTasks.forEach( inp => inp.addEventListener('dblclick', inputdbClick) )
-    }
+    }, 100)
 
     function inputdbClick( event ):void {
         if( isEdit )
             return 
 
         const element = event?.target
-        isEdit = true
-        setStyleEditOn( element )
+        setStyleEditOn( event )
 
-        element.removeEventListener('keypress', inputEnterEvent )
         element.addEventListener('keypress', inputEnterEvent )
-
-        element.removeEventListener('focusout', setStyleEditOff)
-        element.addEventListener('focusout', setStyleEditOff)
-    } 
-
-    function changeTaskTitle( input:HTMLInputElement ):void {
-        const idTask = Number(input.getAttribute('data-id'))
-        const value = input.value.trim()
-        const id = data.getTasks().findIndex( task => task.id === idTask )
-        const oldValue = data.getTasks()[id].title
-
-        if( value === undefined || value === '' || value.length < 3 || oldValue === value ) 
-            input.value = oldValue
-        else {
-            data.setTitleTask(idTask, value)
-            input.value = value
-        }
-        
-        // Render TaskList
-        Render( '.task-list', TaskList() )
+        element.addEventListener('focusout', inputFocusOutEvent )
     }
-
-    function setStyleEditOn( input:HTMLInputElement ):void {
-        input.className = 'inpTask input-editing'
-        input.readOnly = false
-    }
-
-    function inputEnterEvent( event ):void {
+    
+    function setStyleEditOn( event ):void {
         const element:HTMLInputElement = event.target
 
-        if( event.key === 'Enter') {
-            setStyleEditOff( event )
-            changeTaskTitle( element )
-            return
-        }
-    } 
+        element.className = 'inpTask input-editing'
+        element.readOnly = false
+        isEdit = true
+    }
 
     function setStyleEditOff( event ):void {
         const element:HTMLInputElement = event.target
@@ -73,9 +41,58 @@ function TaskEdit( ):void {
         element.className = 'inpTask'
         element.readOnly = true
         isEdit = false
+    }
 
-        changeTaskTitle( element)
+    function inputEnterEvent( event ):void {
+        const element:HTMLInputElement = event.target
+
+        if( event.key === 'Enter') {
+            setStyleEditOff( event )
+            removeEvents( event )
+            changeTaskTitle( element )
+            return
+        }
+    } 
+
+    function inputFocusOutEvent( event ):void {
+        const element:HTMLInputElement = event.target
+
+        setStyleEditOff( event )
+        removeEvents( event )
+        changeTaskTitle( element )        
+    }
+
+    function changeTaskTitle( input:HTMLInputElement ):void {
+        const idTask = Number(input.getAttribute('data-id'))
+        const value = input.value.trim()
+        const id = data.getTasks().findIndex( task => task.id === idTask )
+        const oldValue = data.getTasks()[id].title
+
+        if( value === undefined || value === '' || value.length < 3 || oldValue === value ) {
+            input.value = oldValue
+            const element = document.querySelector<HTMLElement>(`#task-${idTask}`)
+            element?.classList.add('task-edit-error')
+            setTimeout(() => {
+                element?.classList.remove('task-edit-error')
+            }, 400)
+        }
+        else {
+            data.setTitleTask(idTask, value)
+            input.value = value
+        }
+        
+        // Render TaskList
+        setTimeout(() => {
+            Render( '.task-list', TaskList() )
+        }, 500)
+    }
+
+    function removeEvents( event ):void {
+        const element:HTMLInputElement = event.target
+        element.removeEventListener('keypress', inputEnterEvent )
+        element.removeEventListener('focusout', setStyleEditOff )
     }
 }
 
 export default TaskEdit
+

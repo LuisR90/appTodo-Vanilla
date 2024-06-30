@@ -94,7 +94,7 @@ header > form > input:focus {
   background-color: #141414;
 }
 
-.task-complete { 
+.task-complete {
   background-color: rgba(255, 255, 255, 0.04) !important;
 }
 
@@ -181,4 +181,17 @@ header > form > input:focus {
 .task-info p {
   margin-block-start: 0px;
   margin-block-end: 0px;
+}
+
+.task-edit-error {
+  animation: 0.4s shake;
+}
+
+@keyframes shake {
+  0% { transform: translate(10px);}
+  20% { transform: translate(-10px);}
+  40% { transform: translate(10px);}
+  60% { transform: translate(-10px);}
+  80% { transform: translate(10px);}
+  100% { transform: translate(0px);}
 }
