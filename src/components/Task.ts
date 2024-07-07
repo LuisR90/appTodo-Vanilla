@@ -1,13 +1,6 @@
-interface TaskObject {
-    id: number
-    title: string,
-    time: number,
-    complete: boolean,
-    edit: boolean
-    editTime: number
-}
-
+import { TaskObject } from '../utilitys/myInterfaces';
 import Utility from '../utility';
+
 import '../style-input.css';
 
 import EditTaskSvg from '../svgs/EditTask';

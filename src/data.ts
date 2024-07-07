@@ -1,13 +1,4 @@
-interface TaskObject {
-    id: number,
-    title: string,
-    time: number,
-    complete: boolean,
-    edit: boolean
-    editTime: number
-}
-
-interface TaskArray extends Array<TaskObject>{}
+import { TaskObject, TaskArray } from './utilitys/myInterfaces';
 
 let DATA_TASK:TaskArray = []
 const LOCAL_TASK = 'allTask';

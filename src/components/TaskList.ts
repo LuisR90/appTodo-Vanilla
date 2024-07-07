@@ -1,3 +1,5 @@
+import { TaskArray } from '../utilitys/myInterfaces';
+
 import data from '../data';
 
 import Task from '../components/Task';
@@ -10,18 +12,6 @@ function TaskList( ): string {
 
     let tasksComplete = dataTasks.filter( task => task.complete === true )
     let tasksNotComplete = dataTasks.filter( task => task.complete === false)
-
-    let alltasksNotComplete:string = ''
-    for (let index = tasksNotComplete.length-1; index >= 0; index--) {
-        const task = tasksNotComplete[index];
-        alltasksNotComplete += Task( { ...task })
-    }
-
-    let alltasksComplete:string = ''
-    for (let index = tasksComplete.length-1; index >= 0; index--) {
-        const task = tasksComplete[index];
-        alltasksComplete += Task( { ...task })
-    }
     
     TaskButtons()
     TaskEdit()
@@ -32,10 +22,21 @@ function TaskList( ): string {
 
     return (`
         <div class="task-list">
-            ${ dataTasks.length ? alltasksNotComplete : noTasks }
-            ${ dataTasks.length ? alltasksComplete : '' }
+            ${ dataTasks.length ? getList( tasksNotComplete ) : noTasks }
+            ${ dataTasks.length ? getList( tasksComplete ) : '' }
         </div>
     `)
+}
+
+function getList( tasks: TaskArray ):string {
+
+    let taskList:string = ''
+    for (let index = tasks.length-1; index >= 0; index--) {
+        const task = tasks[index];
+        taskList += Task( { ...task })
+    }
+
+    return taskList
 }
 
 export default TaskList
