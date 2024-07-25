@@ -10,7 +10,7 @@ esta hecho en vite y se uso solo HTML, CSS, TypeScript
 
 - ✅ Editar Nombre del Task
 - ✅ Tareas completas al final de la lista
-- ❌ Animaciones
+- ✅ Animaciones
 
 #### Puedes dejar tus Criticas constructivas para mejorar en esto
 #### Gracias!
