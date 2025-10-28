@@ -1,41 +1,40 @@
 {
   "users": [
-  {
-    "id": 1,
-    "nombre": "Juan Pérez",
-    "email": "juan.perez@example.com",
-    "edad": 28,
-    "pais": "Perú",
-    "rol": "admin",
-    "activo": true
-  },
-  {
-    "id": 2,
-    "nombre": "María López",
-    "email": "maria.lopez@example.com",
-    "edad": 32,
-    "pais": "Chile",
-    "rol": "usuario",
-    "activo": true
-  },
-  {
-    "id": 3,
-    "nombre": "Carlos Gómez",
-    "email": "carlos.gomez@example.com",
-    "edad": 25,
-    "pais": "México",
-    "rol": "usuario",
-    "activo": false
-  },
-  {
-    "id": 4,
-    "nombre": "Ana Torres",
-    "email": "ana.torres@example.com",
-    "edad": 30,
-    "pais": "Argentina",
-    "rol": "moderador",
-    "activo": true
-  }
-]
-  
+    {
+      "id": 1,
+      "name": "Juan Pérez",
+      "email": "juan.perez@example.com",
+      "age": 28,
+      "country": "Perú",
+      "role": "admin",
+      "active": true
+    },
+    {
+      "id": 2,
+      "name": "María López",
+      "email": "maria.lopez@example.com",
+      "age": 32,
+      "country": "Chile",
+      "role": "usuario",
+      "active": true
+    },
+    {
+      "id": 3,
+      "name": "Carlos Gómez",
+      "email": "carlos.gomez@example.com",
+      "age": 25,
+      "country": "México",
+      "role": "usuario",
+      "active": false
+    },
+    {
+      "id": 4,
+      "name": "Ana Torres",
+      "email": "ana.torres@example.com",
+      "age": 30,
+      "country": "Argentina",
+      "role": "moderador",
+      "active": true
+    }
+  ]
 }
